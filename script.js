@@ -40,12 +40,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const pass = passwordInput.value.trim();
 
         // Validación simple hardcoded
+        // Validación simple hardcoded
         if (user === 'admin' && pass === 'admin') {
             // Éxito
-            alert(`¡Bienvenido al Panel de Gestión A-TATO!\n\nUsuario: ${user}`);
-            hideModal();
-            // Aquí podrías redirigir a dashboard.html
-            // window.location.href = 'dashboard.html';
+            localStorage.setItem('isLoggedIn', 'true'); // Guardamos sesión
+            window.location.href = 'admin.html';
         } else {
             // Error
             errorMsg.classList.remove('hidden');
