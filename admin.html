@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración | A-TATO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-gray-50 font-sans text-gray-800">
+
+    <!-- Navbar -->
+    <nav class="bg-white shadow-md border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center gap-3">
+                    <div
+                        class="w-8 h-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">
+                        A</div>
+                    <span class="text-xl font-bold text-gray-800">Admin A-TATO</span>
+                </div>
+                <div class="flex items-center">
+                    <span class="text-sm text-gray-500 mr-4">Hola, Docente</span>
+                    <button id="logoutBtn"
+                        class="text-sm bg-red-50 text-red-600 hover:bg-red-100 px-3 py-1.5 rounded-md font-medium transition">
+                        Cerrar Sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- Tabs -->
+        <div class="border-b border-gray-200 mb-6">
+            <nav class="-mb-px flex space-x-8" aria-label="Tabs">
+                <button id="tabStudents"
+                    class="border-indigo-500 text-indigo-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2">
+                    <span>🎓</span> Estudiantes
+                </button>
+                <button id="tabActivities"
+                    class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm flex items-center gap-2">
+                    <span>➕</span> Actividades Matemáticas
+                </button>
+            </nav>
+        </div>
+
+        <!-- Students Section -->
+        <div id="studentsSection">
+            <div class="flex flex-col sm:flex-row justify-between items-center mb-6 gap-4">
+                <div class="flex items-center gap-2">
+                    <label for="disabilityFilter" class="text-sm font-medium text-gray-700">Filtrar por
+                        Limitación:</label>
+                    <select id="disabilityFilter"
+                        class="block w-48 pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md border bg-white shadow-sm">
+                        <option value="all">Todas</option>
+                        <option value="motriz">Motriz</option>
+                        <option value="cognitiva">Cognitiva</option>
+                        <option value="ambas">Ambas</option>
+                    </select>
+                </div>
+                <button id="addStudentBtn"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium shadow-sm flex items-center gap-2 transition">
+                    <span class="text-lg">+</span> Nuevo Estudiante
+                </button>
+            </div>
+
+            <div class="bg-white shadow overflow-hidden rounded-lg border border-gray-200">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Nombre</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Edad</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Limitación</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Grado Cognitivo</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Asistencia</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTableBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Rows will be populated by JS -->
+                    </tbody>
+                </table>
+                <div id="studentEmptyState" class="hidden p-8 text-center text-gray-500">
+                    No hay estudiantes registrados.
+                </div>
+            </div>
+        </div>
+
+        <!-- Activities Section -->
+        <div id="activitiesSection" class="hidden">
+            <div class="flex justify-end mb-6">
+                <button id="addActivityBtn"
+                    class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg font-medium shadow-sm flex items-center gap-2 transition">
+                    <span class="text-lg">+</span> Nueva Actividad
+                </button>
+            </div>
+
+            <div class="bg-white shadow overflow-hidden rounded-lg border border-gray-200">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Título</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Descripción</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Dificultad</th>
+                            <th scope="col"
+                                class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activityTableBody" class="bg-white divide-y divide-gray-200">
+                        <!-- Rows will be populated by JS -->
+                    </tbody>
+                </table>
+                <div id="activityEmptyState" class="hidden p-8 text-center text-gray-500">
+                    No hay actividades registradas.
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Student Modal -->
+    <div id="studentModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-lg p-6 relative animate-fade-in">
+            <button id="closeStudentModal"
+                class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
+
+            <h3 id="studentModalTitle" class="text-xl font-bold text-gray-900 mb-4">Añadir Estudiante</h3>
+
+            <form id="studentForm" class="space-y-4">
+                <input type="hidden" id="studentId">
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                        <input type="text" id="studentName" required
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Edad</label>
+                        <input type="number" id="studentAge" required min="1"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Tipo de Limitación</label>
+                    <select id="studentDisability" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-white">
+                        <option value="motriz">Motriz</option>
+                        <option value="cognitiva">Cognitiva</option>
+                        <option value="ambas">Ambas</option>
+                    </select>
+                </div>
+
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Grado Cognitivo</label>
+                        <select id="studentGrade"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-white">
+                            <option value="leve">Leve</option>
+                            <option value="moderado">Moderado</option>
+                            <option value="grave">Grave</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Necesita Asistencia</label>
+                        <select id="studentAssistance"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-white">
+                            <option value="no">No</option>
+                            <option value="si">Sí, parcial</option>
+                            <option value="total">Sí, total</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="flex justify-end gap-2 mt-6">
+                    <button type="button" id="cancelStudent"
+                        class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">Cancelar</button>
+                    <button type="submit"
+                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Activity Modal -->
+    <div id="activityModal"
+        class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-xl shadow-xl w-full max-w-lg p-6 relative animate-fade-in">
+            <button id="closeActivityModal"
+                class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
+
+            <h3 id="activityModalTitle" class="text-xl font-bold text-gray-900 mb-4">Añadir Actividad</h3>
+
+            <form id="activityForm" class="space-y-4">
+                <input type="hidden" id="activityId">
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Título</label>
+                    <input type="text" id="activityTitle" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Descripción</label>
+                    <textarea id="activityDesc" rows="3" required
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Dificultad</label>
+                    <select id="activityDifficulty"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-md focus:ring-indigo-500 focus:border-indigo-500 bg-white">
+                        <option value="baja">Baja</option>
+                        <option value="media">Media</option>
+                        <option value="alta">Alta</option>
+                    </select>
+                </div>
+
+                <div class="flex justify-end gap-2 mt-6">
+                    <button type="button" id="cancelActivity"
+                        class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md hover:bg-gray-50">Cancelar</button>
+                    <button type="submit"
+                        class="px-4 py-2 text-sm font-medium text-white bg-indigo-600 rounded-md hover:bg-indigo-700">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+
+</html>
