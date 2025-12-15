@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A-TATO | Matemáticas Accesibles</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div
+                    class="w-10 h-10 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                    A</div>
+                <h1 class="text-2xl font-bold text-indigo-700 tracking-tight">A-TATO</h1>
+            </div>
+            <nav class="hidden md:flex gap-6 text-sm font-medium">
+                <a href="#features" class="hover:text-indigo-600 transition">Características</a>
+                <a href="#about" class="hover:text-indigo-600 transition">Sobre el Proyecto</a>
+                <a href="#contact" class="hover:text-indigo-600 transition">Contacto</a>
+            </nav>
+            <button id="loginBtn"
+                class="bg-indigo-600 hover:bg-indigo-700 text-white px-5 py-2 rounded-full font-medium transition shadow-lg hover:shadow-xl">
+                Acceso Docente
+            </button>
+        </div>
+    </header>
+
+    <section class="relative bg-indigo-900 text-white py-20 overflow-hidden">
+        <div
+            class="absolute inset-0 opacity-20 bg-[url('https://img.freepik.com/free-vector/math-background_23-2148145296.jpg?w=1380')] bg-cover bg-center">
+        </div>
+        <div class="container mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center">
+            <div class="md:w-1/2 mb-10 md:mb-0">
+                <h2 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">
+                    Renovando el aprendizaje para <span class="text-yellow-400">todos</span>.
+                </h2>
+                <p class="text-lg text-indigo-100 mb-8 leading-relaxed">
+                    A-TATO es la evolución accesible de "Tato Matemáticas". Diseñado para eliminar barreras cognitivas y
+                    motrices en la educación especial.
+                </p>
+                <div class="flex gap-4">
+                    <button onclick="document.getElementById('loginBtn').click()"
+                        class="bg-yellow-400 text-indigo-900 px-6 py-3 rounded-lg font-bold hover:bg-yellow-300 transition">
+                        Comenzar Ahora
+                    </button>
+                    <a href="#features"
+                        class="border border-white text-white px-6 py-3 rounded-lg font-medium hover:bg-white hover:text-indigo-900 transition">
+                        Saber más
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center">
+                <img src="https://placehold.co/500x350/4f46e5/ffffff?text=Interfaz+A-TATO\n(Accesible+y+Simple)"
+                    alt="Prototipo Interfaz" class="rounded-xl shadow-2xl border-4 border-white/20">
+            </div>
+        </div>
+    </section>
+
+    <section id="features" class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="text-3xl font-bold text-gray-900 mb-4">Nuestros Pilares</h3>
+                <p class="text-gray-600 max-w-2xl mx-auto">Basado en el Pliego de Prescripciones Técnicas, A-TATO se
+                    construye sobre tres fundamentos clave.</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div
+                        class="w-14 h-14 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-6 text-2xl">
+                        ♿</div>
+                    <h4 class="text-xl font-bold mb-3">Accesibilidad Total</h4>
+                    <p class="text-gray-600">Diseño de alto contraste, elementos grandes y soporte para diversidad
+                        funcional (cognitiva y motriz).</p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div
+                        class="w-14 h-14 bg-green-100 text-green-600 rounded-full flex items-center justify-center mb-6 text-2xl">
+                        📡</div>
+                    <h4 class="text-xl font-bold mb-3">Offline-First</h4>
+                    <p class="text-gray-600">Funcionalidad garantizada sin conexión a internet. Los datos se sincronizan
+                        cuando la red vuelve.</p>
+                </div>
+
+                <div class="bg-slate-50 p-8 rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition">
+                    <div
+                        class="w-14 h-14 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mb-6 text-2xl">
+                        ⚙️</div>
+                    <h4 class="text-xl font-bold mb-3">Perfiles Configurables</h4>
+                    <p class="text-gray-600">Gestión de alumnos y adaptación de dificultad según las necesidades
+                        específicas de cada estudiante.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-2">Proyecto PGPI - Máster Ingeniería Informática UGR</p>
+            <p class="text-sm">© 2025 Equipo A-TATO. Basado en la renovación del software del CEE Purísima Concepción.
+            </p>
+        </div>
+    </footer>
+
+    <div id="loginModal"
+        class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md p-8 relative animate-fade-in">
+            <button id="closeModal"
+                class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 text-xl font-bold">&times;</button>
+
+            <div class="text-center mb-6">
+                <h2 class="text-2xl font-bold text-gray-800">Iniciar Sesión</h2>
+                <p class="text-sm text-gray-500">Acceso administrativo al panel de control</p>
+            </div>
+
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Usuario</label>
+                    <input type="text" id="username"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
+                        placeholder="admin">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+                    <input type="password" id="password"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none transition"
+                        placeholder="•••••">
+                </div>
+                <div id="errorMsg" class="text-red-500 text-sm hidden text-center">Credenciales incorrectas</div>
+
+                <button type="submit"
+                    class="w-full bg-indigo-600 text-white py-2 rounded-lg font-bold hover:bg-indigo-700 transition shadow-md">
+                    Entrar
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
